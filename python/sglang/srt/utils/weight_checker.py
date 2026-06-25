@@ -145,7 +145,7 @@ class WeightChecker:
             tp_rank=mr.ps.tp_rank,
             tp_size=mr.ps.tp_size,
             dp_rank=mr.ps.dp_rank if mr.ps.dp_rank is not None else 0,
-            dp_size=mr.ps.dp_size,
+            dp_size=mr.ps.attn_dp_size,
             pp_rank=mr.ps.pp_rank,
             pp_size=mr.ps.pp_size,
             rank=dist.get_rank() if dist.is_initialized() else 0,

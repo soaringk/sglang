@@ -482,7 +482,7 @@ class ModelRunner:
             hybrid_gdn_config=hybrid_gdn_config(self.model_config),
             pp_size=self.ps.pp_size,
             pp_group=self.pp_group,
-            dp_size=self.ps.dp_size,
+            dp_size=self.ps.attn_dp_size,
             start_layer=self.layer_info.start_layer,
             end_layer=self.layer_info.end_layer,
             num_effective_layers=self.layer_info.num_effective_layers,
@@ -1062,7 +1062,7 @@ class ModelRunner:
         if self.msprobe_debugger is not None:
             rank_id = (
                 self.gpu_id
-                if self.ps.dp_size is not None and self.ps.dp_size > 1
+                if self.ps.attn_dp_size is not None and self.ps.attn_dp_size > 1
                 else None
             )
             self.msprobe_debugger.start(model=self.model, rank_id=rank_id)
